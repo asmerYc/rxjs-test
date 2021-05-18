@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcss.com/rxjs/6.0.0-alpha.3/Rx.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button>click Me!hah</button>
+    </div>
+</body>
+<script>
+    // var count = 0;
+    // var rate = 1000;
+    // var lastClick = Date.now() - rate;
+    // var button = document.querySelector('button');
+    // console.log(button);
+    // button.addEventListener('click',function(){
+    //     if(Date.now() -lastClick >= rate) {
+    //         console.log(`Clicked ${++count} times`);
+    //         lastClick = Date.now();
+    //     }
+    // })
+
+    //使用RZxjs
+    var button = document.querySelector('button');
+    Rx.Observable.fromEvent(button,'click')
+        .throttleTime(1000)
+        .scan(count => count + 1,0)
+        .subscribe(count => console.log(`Click ${count} times`))
+</script>
+</html>
