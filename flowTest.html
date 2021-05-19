@@ -26,10 +26,28 @@
     // })
 
     //使用RZxjs
-    var button = document.querySelector('button');
-    Rx.Observable.fromEvent(button,'click')
-        .throttleTime(1000)
-        .scan(count => count + 1,0)
-        .subscribe(count => console.log(`Click ${count} times`))
+    // var button = document.querySelector('button');
+    // Rx.Observable.fromEvent(button,'click')
+    //     .throttleTime(1000)
+    //     .scan(count => count + 1,0)
+    //     .subscribe(count => console.log(`Click ${count} times`))
+
+    // observable是多个值惰性推送集合
+    var observable = Rx.Observable.create((observer) => {
+        observer.next(1);
+        observer.next(2);
+        observer.next(3);
+        setTimeout(() => {
+            observer.next(4);
+            observer.complete();
+        },1000)
+    })
+    console.log('before the subscribe')
+    observable.subscribe({
+        next:x =>  console.log('got value' + x),
+        error:err => console.error('something wrong occurred:' + err),
+        complete:() =>console.log('done')
+    })
+    console.log('just after subscribe')
 </script>
 </html>
