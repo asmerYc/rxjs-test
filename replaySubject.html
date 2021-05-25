@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcss.com/rxjs/6.0.0-alpha.3/Rx.min.js"></script>
+    <title>replaySubject</title>
+</head>
+<body>
+    <script>
+        // replaySubject类似于BehaviorSubject它可以发送旧值给新的订阅着，但它还可以记录Observable执行的一部分、
+        // replaySubject记录Observable执行中的多个值并将其回放给新的订阅者
+        // 当创建ReplaySubject时，你可以指定回放多少个值
+        var subject = new Rx.ReplaySubject(3) // 为新的订阅者缓冲3个值
+        subject.subscribe({
+            next:(v) => console.log('observerA:' + v )
+        });
+        subject.next(1);
+        subject.next(2);
+        subject.next(3);
+        subject.next(4);
+
+        subject.subscribe({
+            next:(v) => console.log('observerB' + v)
+        });
+
+        subject.next(5);
+    </script>
+</body>
+</html>
