@@ -11,10 +11,10 @@
     <button> click me </button>
     <script>
         var btn = document.querySelector('button');
-        console.log(btn,'按钮的信息！');
         var observable = Rx.Observable.fromEvent(btn,'click');
         observable.throttleTime(1000)
         .map(event => event.clientX)
+        .do(console.log(event,'查看一下event!'))
         .scan((count,clientX) => count + clientX,0)
         .subscribe(count => console.log(count));
     </script>
