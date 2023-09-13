@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcss.com/rxjs/6.0.0-alpha.3/Rx.min.js"></script>
+    <title>replaySubject</title>
+</head>
+<body>
+    <script>
+    const ob1 = Rx.Observable.of(1).delay(1000);
+    const ob2 = Rx.Observable.of(2).delay(2000);
+    const ob3 = Rx.Observable.of(3).delay(3000);
+
+    Rx.Observable.forkJoin(ob1, ob2, ob3).subscribe((data) => console.log(data));
+    Rx.Observable.zip(ob1, ob2, ob3).subscribe((data) => console.log(data));
+    Rx.Observable.combineLatest(ob1, ob2, ob3).subscribe((data) => console.log(data));
+    </script>
+</body>
+</html>

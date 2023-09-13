@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcss.com/rxjs/6.0.0-alpha.3/Rx.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <button id="container">click</button>
+<script>
+
+// var clicks = Rx.Observable.fromEvent(document, 'click');
+// var result = clicks.map((ev) => Rx.Observable.interval(1000));
+// result.subscribe(x => console.log(x));
+
+// 创建发出点击事件的 observable
+const source = Rx.Observable.fromEvent(document, 'click');
+// 映射成给定的事件时间戳
+const example = source.map(event => `Event time: ${event.timeStamp}`);
+// 输出 (示例中的数字以运行时为准): 'Event time: 7276.390000000001'
+const subscribe = example.subscribe(val => console.log(val));
+
+//emit immediately, then every 5s
+// const source = Rx.Observable.timer(0, 5000);
+// //switch to new inner observable when source emits, emit items that are emitted
+// const example = source.map(() => Rx.Observable.interval(500));
+// //output: 0,1,2,3,4,5,6,7,8,9...0,1,2,3,4,5,6,7,8
+// const subscribe = example.subscribe(val => console.log(val));
+
+
+</script>
+</body>
+</html>

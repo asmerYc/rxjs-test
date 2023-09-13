@@ -5,18 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.bootcss.com/rxjs/6.0.0-alpha.3/Rx.min.js"></script>
-    <title>let me have s try about map</title>
+    <title>let me have a try about map</title>
 </head>
 <body>
     <button> click me </button>
     <script>
-        var btn = document.querySelector('button');
-        var observable = Rx.Observable.fromEvent(btn,'click');
-        observable.throttleTime(1000)
-        .map(event => event.clientX)
-        .do(console.log(event,'查看一下event!'))
-        .scan((count,clientX) => count + clientX,0)
-        .subscribe(count => console.log(count));
+        // var btn = document.querySelector('button');
+        // var observable = Rx.Observable.fromEvent(btn,'click');
+        // observable.throttleTime(1000)
+        // .map(event => event.clientX)
+        // .scan((count,clientX) => count + clientX,0)
+        // .subscribe(count => console.log(count));
+        let test = Rx.Observable.of([1,2,3]);
+        Rx.Observable.of([1,2,3]).Rx.Observable.map(x => x * 2).subscribe(res => console.log(res))
     </script>
 </body>
 </html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let intervalScore = [
+         {  intervalType:'week',
+            startTiem:0,
+            tripEvents:[
+                {count:0, eventType:'HARD_BREAK'}
+            ]
+         },
+         {  intervalType:'week',
+            startTiem:1,
+            tripEvents:[
+                {count:1, eventType:'HARD_BREAK'}
+            ]
+         },
+         {  intervalType:'week',
+            startTiem:2,
+            tripEvents:[
+                {count:2, eventType:'HARD_BREAK'}
+            ]
+         },
+         {  intervalType:'week',
+            startTiem:3,
+            tripEvents:[
+                {count:3, eventType:'HARD_BREAK'}
+            ]
+         },
+         {  intervalType:'week',
+            startTiem:4,
+            tripEvents:[
+                {count:4, eventType:'HARD_BREAK'}
+            ]
+         },
+         {  intervalType:'week',
+            startTiem:5,
+            tripEvents:[
+                {count:5, eventType:'HARD_BREAK'}
+            ]
+         }
+        ];
+        // 目标是拿到里面的类型组成一个数据结构 like [{startTime:0,count:0} ......,{startTIme:5,count:5}] length = 6
+         function formatter(array) {
+           const results =  array.map(item => {
+               return {
+                startTime:item.startTiem,
+                counts:item.tripEvents[0].count
+               }
+            });
+            return results;
+         }
+ 
+        
+         console.log(formatter(intervalScore), 'xxx');
+    </script>
+</body>
+</html>

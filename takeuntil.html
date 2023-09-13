@@ -10,16 +10,16 @@
 <body>
     <div>点击一下</div>
     <script>
-        // var div = document.querySelector('div')
-        // var interval = Rx.Observable.interval(1000);
-        // var clicks = Rx.Observable.fromEvent(div,'click');
-        // var result = interval.takeUntil(clicks);
-        // result.subscribe(x => console.log(x))
-        var range = Rx.Observable.range(0,10);
-        range.pipe(
-            map((n) => n + '!'),
-            map((s) => 'Hello' + s),
-        ).subscribe(x => console.log(x))
+        var div = document.querySelector('div')
+        var interval = Rx.Observable.interval(1000);
+        var clicks = Rx.Observable.fromEvent(div,'click');
+        var result = interval.takeUntil(clicks);
+        result.subscribe(x => console.log(x))
+        // var range = Rx.Observable.range(0,10);
+        // range.pipe(
+        //     map((n) => n + '!'),
+        //     map((s) => 'Hello' + s),
+        // ).subscribe(x => console.log(x))
     </script>
 </body>
 </html>

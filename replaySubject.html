@@ -22,10 +22,10 @@
         subject.next(4);
 
         subject.subscribe({
-            next:(v) => console.log('observerB' + v)
+            next:(v) => console.log('observerB:' + v)
         });
 
-        subject.next(5);
+        // subject.next(5);
     </script>
 </body>
 </html>

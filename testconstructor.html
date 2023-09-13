@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let metric_names = {
+            DATA_COLLECTOR:{
+                DASHBOARD:{EVENTHUB:null,DATAMAP:null},
+                DPCSETC:{EVENTHUB:null,DATAMAP:null},
+                TRIP:{AVG_TRIP_PER_CAR:null,DATAMAP:null},
+            },
+            FORD:{
+                DASHBOARD:{EVENTHUB:null,DATAMAP:null},
+                DPCSETC:{EVENTHUB:null,DATAMAP:null},
+                TRIP:{AVG_TRIP_PER_CAR:{
+                    acl_object_identity_id:6726,
+                    create_time:'"2022-07-08T00:00:00.000+0000"',
+                    description:'"Permission to access Trip metric Avg_Trip_Per_Car for Ford"',
+                    update_time:'"2022-07-08T00:00:00.000+0000"',
+                },DATAMAP:null},
+            }
+        }
+const products = ['DATA_COLLECTOR', 'DENALI', 'DRIVEMOTION','DRIVEMOTION_CMT','FORD','FORD_TMC','MOTIONAUTO','NOVO','NOVO_CMT','RIVIAN','SCOUT','VIVID_SCOUTDRIVE', 'VIVID_USAM'];
+
+function transform(dataObj) {
+    console.log(dataObj, 'dataObj');
+    if(Object.prototype.toString.call(dataObj) === "[object Object]") {
+     for(let x in  dataObj){
+        for(let y in dataObj[x]) {
+            let test= [];
+            for(let z in dataObj[x][y]){
+                console.log(dataObj[x][y][z], 'dataObj[x][y]');
+                test.push({[z]:dataObj[x][y][z]})
+            }      
+            dataObj[x][y] = test;
+        }
+    }
+       return dataObj
+    }
+}
+const result = transform(metric_names);
+console.log(result, 'result');
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcss.com/rxjs/6.0.0-alpha.3/Rx.min.js"></script>
+    <title>replaySubject</title>
+</head>
+<body>
+    <script>
+        // var clicks = Rx.Observable.fromEvent(document, 'click');
+        // var higherOrder = clicks.map(ev =>
+        //   Rx.Observable.interval(Math.random()*2000).take(3)
+        // ).take(2);
+        // var result = higherOrder.combineAll();
+        // result.subscribe(x => console.log(x));
+
+        // var interval = Rx.Observable.interval(1000);
+        // var five = interval.take(5);
+        // five.subscribe(x => console.log(x));
+
+        var many = Rx.Observable.range(1, 100);
+        many.subscribe(x => console.log(x))
+        // var lastThree = many.takeLast(3);
+        // lastThree.subscribe(x => console.log(x));
+    </script>
+</body>
+</html>

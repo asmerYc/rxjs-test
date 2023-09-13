@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcss.com/rxjs/6.0.0-alpha.3/Rx.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var clicks = Rx.Observable.fromEvent(document, 'click');
+        // 每次点击事件都会映射成间隔1秒的 interval Observable
+        var higherOrder = clicks.map((ev) => Rx.Observable.interval(1000));
+        var switched = higherOrder.switch();
+        // 结果是 `switched` 本质上是一个每次点击时会重新启动的计时器。
+        // 之前点击产生的 interval Observables 不会与当前的合并。
+        switched.subscribe(x => console.log(x));
+    </script>
+</body>
+</html>

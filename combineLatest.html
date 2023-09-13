@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcss.com/rxjs/6.0.0-alpha.3/Rx.min.js"></script>
+    <title>replaySubject</title>
+</head>
+<body>
+    <script>
+        const firstTimer = Rx.Observable.timer(0, 1000); // 从现在开始，每隔1秒发出0, 1, 2...
+        const secondTimer = Rx.Observable.timer(500, 1000); // 0.5秒后，每隔1秒发出0, 1, 2...
+        const combinedTimers = Rx.Observable.combineLatest(firstTimer, secondTimer);
+        combinedTimers.subscribe(value => console.log(value));
+    </script>
+</body>
+</html>
